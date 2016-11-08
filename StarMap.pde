@@ -1,13 +1,14 @@
 Table table;
 void setup()
 {
-  size(500,500);
+  size(800,800);
   background(0);
   
   table = loadTable("stars.csv","header, csv");
   loadData();
   printStars();
   drawGrid();
+  renderStars();
 }
 
 ArrayList<Star> stars = new ArrayList<Star>();
@@ -70,5 +71,13 @@ void drawGrid()
         parsecs++;
       }
     }
+  }
+}
+
+void renderStars()
+{
+  for(int i=0; i<stars.size(); i++)
+  {
+    stars.get(i).drawStar();
   }
 }
