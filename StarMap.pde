@@ -1,7 +1,7 @@
 Table table;
 void setup()
 {
-  size(500,500);
+  size(800,800);
   background(0);
   
   table = loadTable("stars.csv","header, csv");
@@ -96,6 +96,7 @@ void mousePressed()
     if(mouseX > mappedxg-2 && mouseX < mappedxg+2)
     {
       stars.get(i).clickFlag = 1;
+      println(stars.get(i).starName);
     }
   }  
     
