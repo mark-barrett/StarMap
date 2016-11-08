@@ -50,6 +50,7 @@ void printStars()
 void drawGrid()
 {
   float boxWidth = width / 10 -10;
+  int parsecs = -5;
   
   for(int i=0; i<10; i++)
   {
@@ -60,6 +61,14 @@ void drawGrid()
       noFill();
       stroke(208, 58, 250);
       rect(x, y, boxWidth, boxWidth);
+      
+      if(i==0)
+      {
+        fill(208, 58, 250);
+        text(parsecs, y, 20);
+        text(parsecs, x-40, y, 20);
+        parsecs++;
+      }
     }
   }
 }
