@@ -5,6 +5,7 @@ class Star
   float distance;
   float xg, yg, zg;
   float absMag;
+  int clickFlag;
   
   Star(int hab, String starName, float distance, float xg, float yg, float zg, float absMag)
   {
@@ -15,6 +16,7 @@ class Star
     this.yg = yg;
     this.zg = zg;
     this.absMag = absMag;
+    this.clickFlag = 0;
   }
   
   //To string method

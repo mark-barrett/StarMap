@@ -14,7 +14,8 @@ ArrayList<Star> stars = new ArrayList<Star>();
 
 float boxX = 50;
 float boxY = 50;
-    
+boolean lineDrawn = false;
+
 Star star;
 void draw()
 {
@@ -89,7 +90,27 @@ void mousePressed()
     float mappedyg = map(stars.get(i).yg, -5, 5, 50, height-50);
     if(mouseX > mappedxg-2 && mouseX < mappedxg+2)
     {
-      println(stars.get(i).starName);
+      stars.get(i).clickFlag = 1;
+    }
+  }  
+  if(lineDrawn == true)
+  {
+    
+  }
+    
+}
+
+void mouseMoved()
+{
+  for(int i=0; i<stars.size(); i++)
+  {
+    if(stars.get(i).clickFlag == 1)
+    {
+      float mappedxg = map(stars.get(i).xg, -5, 5, 50, width-50);
+      println(mappedxg, stars.get(i).yg);
+      line(mouseX, mouseY, mappedxg, stars.get(i).yg);
+      lineDrawn = true;
     }
   }
+  
 }
