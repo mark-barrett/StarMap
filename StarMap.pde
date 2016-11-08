@@ -1,14 +1,20 @@
 Table table;
 void setup()
 {
-  size(800,800);
+  size(500,500);
+  background(0);
   
   table = loadTable("stars.csv","header, csv");
   loadData();
+  printStars();
+  drawGrid();
 }
 
 ArrayList<Star> stars = new ArrayList<Star>();
 
+float boxX = 50;
+float boxY = 50;
+    
 Star star;
 void draw()
 {
@@ -30,5 +36,30 @@ void loadData()
     
     star = new Star(hab, starName, distance, xg, yg, zg, absMag);
     stars.add(star);
+  }
+}
+
+void printStars()
+{
+  for(int i=0; i<stars.size(); i++)
+  {
+    println(stars.get(i).toString());
+  }
+}
+
+void drawGrid()
+{
+  float boxWidth = width / 10 -10;
+  
+  for(int i=0; i<10; i++)
+  {
+    for(int j=0; j<10; j++)
+    {
+      float x = map(i, 0, 10, 50, width-50);
+      float y = map(j, 0, 10, 50, height-50);
+      noFill();
+      stroke(208, 58, 250);
+      rect(x, y, boxWidth, boxWidth);
+    }
   }
 }
