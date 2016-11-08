@@ -6,7 +6,6 @@ void setup()
   
   table = loadTable("stars.csv","header, csv");
   loadData();
-  printStars();
   drawGrid();
   renderStars();
 }
@@ -79,5 +78,18 @@ void renderStars()
   for(int i=0; i<stars.size(); i++)
   {
     stars.get(i).drawStar();
+  }
+}
+
+void mousePressed()
+{
+  for(int i=0; i<stars.size(); i++)
+  {
+    float mappedxg = map(stars.get(i).xg, -5, 5, 50, width-50);
+    float mappedyg = map(stars.get(i).yg, -5, 5, 50, height-50);
+    if(mouseX > mappedxg-2 && mouseX < mappedxg+2)
+    {
+      println(stars.get(i).starName);
+    }
   }
 }
