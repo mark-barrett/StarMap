@@ -31,6 +31,13 @@ class Star
     stroke(250, 255, 3);
     line(mappedxg-6,mappedyg,mappedxg+6,mappedyg);
     line(mappedxg,mappedyg-6,mappedxg,mappedyg+6);
+    stroke(255, 0, 0);
+    ellipse(mappedxg, mappedyg, 12, 12);
+    fill(255);
+    textSize(10);
+    textAlign(LEFT, CENTER);
+    text(this.starName, mappedxg+10, mappedyg);
+    noFill();
   }
   
 }
