@@ -1,12 +1,13 @@
 Table table;
 void setup()
 {
-  size(800,800);
+  size(500,500);
   background(0);
   
   table = loadTable("stars.csv","header, csv");
   loadData();
   drawGrid();
+  printStars();
   renderStars();
 }
 
@@ -14,6 +15,10 @@ ArrayList<Star> stars = new ArrayList<Star>();
 
 float boxX = 50;
 float boxY = 50;
+
+float startX;
+float startY;
+
 boolean lineDrawn = false;
 
 Star star;
@@ -93,24 +98,37 @@ void mousePressed()
       stars.get(i).clickFlag = 1;
     }
   }  
-  if(lineDrawn == true)
-  {
-    
-  }
     
 }
 
-void mouseMoved()
+void mouseDragged()
 {
   for(int i=0; i<stars.size(); i++)
   {
     if(stars.get(i).clickFlag == 1)
     {
       float mappedxg = map(stars.get(i).xg, -5, 5, 50, width-50);
-      println(mappedxg, stars.get(i).yg);
       line(mouseX, mouseY, mappedxg, stars.get(i).yg);
+      startX = mappedxg;
+      startY = stars.get(i).yg;
       lineDrawn = true;
+      stars.get(i).clickFlag = 0;
     }
   }
-  
+}
+
+void mouseReleased()
+{
+  if(lineDrawn == true)
+  {
+    strokeWeight(3);
+    stroke(255);
+    line(startX, startY, mouseX, mouseY);
+    lineDrawn = false;
+    startX = 0;
+    startY = 0;
+    float distance = startX-mouseY;
+    String message = "Distance "+distance;
+    text(message, 50, height-10);
+  }
 }
